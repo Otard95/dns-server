@@ -18,7 +18,11 @@ int main(void)
   printf("[INFO] Recievd packet from %s with size %ld\n", req->client_ip, req->data_len); fflush(stdout);
   print_packet_info(&req->packet);
   
-  // Check if packet RCode is set. If so resopond.
+  if (req->packet->header->RCode != 0) {
+    // Unsupported query type
+    // respond
+  }
+  
   // Parse query questions
   // Lookup host names
   // If has answer, build response
